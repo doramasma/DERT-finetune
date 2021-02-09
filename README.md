@@ -43,8 +43,8 @@ Unlike traditional computer vision techniques, DETR approaches object detection 
 
 - Special mention:
     - Build your own [dataset](https://roboflow.com/)  
-    - e
-    - e
+    - Example of [fine-tuning dert](https://github.com/woctezuma/finetune-detr) by  [woctezuma](https://github.com/woctezuma)
+    - [Fork](https://github.com/woctezuma/detr/tree/finetune) of DERT prepared to fine-tune on custom dataset by [woctezuma](https://github.com/woctezuma)
 
 - Official notebooks:
     - An [official notebook](https://colab.research.google.com/github/facebookresearch/detr/blob/colab/notebooks/detr_attention.ipynb) ilustrating DERT
