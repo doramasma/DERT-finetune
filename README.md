@@ -37,9 +37,8 @@ Unlike traditional computer vision techniques, DETR approaches object detection 
     - [DERT checkpoints](https://github.com/facebookresearch/detr#model-zoo): for the fine-tune, we will remove the classification head.
 
 - Requirements:
-    - a  
-    - e
-    - e
+    - [Dataset](https://drive.google.com/drive/folders/1Z2RUfz8KP10lM3fk8sNSdPaMc0e5ll8D?usp=sharing) for fine-tune DERT  
+    - The last [checkpoint](https://drive.google.com/drive/folders/1Z2RUfz8KP10lM3fk8sNSdPaMc0e5ll8D?usp=sharing) (inside outputs folder)
 
 - Special mention:
     - Build your own [dataset](https://roboflow.com/)  
