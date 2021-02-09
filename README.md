@@ -40,3 +40,17 @@ Unlike traditional computer vision techniques, DETR approaches object detection 
     - a  
     - e
     - e
+
+- Special mention:
+    - Build your own [dataset](https://roboflow.com/)  
+    - e
+    - e
+
+- Official notebooks:
+    - An [official notebook](https://colab.research.google.com/github/facebookresearch/detr/blob/colab/notebooks/detr_attention.ipynb) ilustrating DERT
+    - An [official notebook](https://colab.research.google.com/github/cocodataset/cocoapi/blob/master/PythonAPI/pycocoDemo.ipynb) for using COCO API
+
+
+- Tutorials:
+    - A [Github Gist](https://gist.github.com/woctezuma/e9f8f9fe1737987351582e9441c46b5d) explaining how to fine-tune DERT  
+    - A [Github issue](https://github.com/facebookresearch/detr/issues/9#issuecomment-636391562) explaining how to load a fine-tuned DERT 
