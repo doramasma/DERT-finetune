@@ -3,7 +3,7 @@
 The mainly purpose of this repository is to fine-tune Facebook's [DERT](https://github.com/facebookresearch/detr) (DEtection Transformer). 
 
 
-![alt text](./images/dert-result.png "Dert result after finetune")
+![alt text](./data/images/dert-result.png "Dert result after finetune")
 
 Author: Doramas Báez Bernal <br/>
 Email: doramas.baez101@alu.ulpgc.es
