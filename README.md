@@ -23,11 +23,40 @@ Unlike traditional computer vision techniques, DETR approaches object detection 
 
 ## Requirements <a id="Requirements"></a>
 
+This section indicates the main dependencies of the project:
+
+- torch>=1.5.0
+- torchvision>=0.6.0
+- pycocotools
+
+Also, it is necessary to download the following directories:
+- [Dataset](https://drive.google.com/drive/folders/1Z2RUfz8KP10lM3fk8sNSdPaMc0e5ll8D?usp=sharing) for the fine-tuning
+- [Checkpoints](https://drive.google.com/drive/folders/1Z2RUfz8KP10lM3fk8sNSdPaMc0e5ll8D?usp=sharing) of the model after fine-tuning
+
+Therefore, the project must have the following structure:
+
+```
+path/to/DERT-finetune/
+├ dert.ipynb            # dert notebook
+├ train_custom_coco/    # folder containing dataset for fine-tuning
+│   ├ annotations/        # annotation json files
+│   ├ image_test/         # Images for testing after fine-tuning
+│   ├ train2017/          # train images
+│   └ val2017/            # val images
+├  outputs/              
+│    └ checkpoint.pth      # checkpoint of the model
+├  data/                 
+│    ├ dert_finetune/      # DETR to fine-tune on a dataset
+│    └ images/             # Images for the readme
+```
+
 ## Detection Transformer (DERT) <a id="Dert"></a>
 
 ### General information (DERT) <a id="GeneralInformation"></a>
 
 ### Fine-tuning <a id="Fine-tuning"></a>
+
+
 
 ## References <a id="References"></a> 
 
