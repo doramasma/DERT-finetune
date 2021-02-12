@@ -1,6 +1,6 @@
 # Fine-tuning Detection Transformer (DERT)
 
-The mainly purpose of this repository is to fine-tune Facebook's [DERT](https://github.com/facebookresearch/detr) (DEtection Transformer). 
+The main purpose of this repository is to fine-tune Facebook's [DERT](https://github.com/facebookresearch/detr) (DEtection Transformer). 
 
 
 ![alt text](./data/images/dert-result.png "Dert result after finetune")
@@ -21,7 +21,7 @@ Email: doramas.baez101@alu.ulpgc.es
 
 ## Introduction <a id="Introduction"></a>
 
-Unlike traditional computer vision techniques, DETR approaches object detection as a direct set prediction problem. It consists of a set-based global loss, which forces unique predictions via bipartite matching, and a Transformer encoder-decoder architecture. Given a fixed small set of learned object queries, DETR reasons about the relations of the objects and the global image context to directly output the final set of predictions in parallel. Due to this parallel nature, DETR is very fast and efficient ([paper](https://arxiv.org/abs/2005.12872)).
+Unlike traditional computer vision techniques, DETR approaches object detection as a direct set prediction problem. It consists on a set-based global loss, which forces unique predictions via bipartite matching, and a Transformer encoder-decoder architecture. Given a fixed small set of learned object queries, DETR reasons about the relations of the objects and the global image context to directly output the final set of predictions in parallel. Due to this parallel nature, DETR is very fast and efficient ([paper](https://arxiv.org/abs/2005.12872)).
 
 ## Requirements <a id="Requirements"></a>
 
@@ -59,11 +59,18 @@ path/to/DERT-finetune/
 ![alt text](./data/images/dert.png "Dert architecture")
 
 DETR directly predicts (in parallel) the final set of detections by combining
-a common CNN with a transformer architecture. During training, bipartite matching uniquely assigns predictions with ground truth boxes. Prediction with no match should yield a “no object” (∅) class prediction.
+a common CNN with a transformer architecture. During training, bipartite matching uniquely assigns predictions with ground truth boxes. Prediction with no match should yield a “no object” (∅) class prediction. So, they adopt an enconder-decoder architecture based on transformers, a popular architecture for sequence prediction. Applying this architecture and using the concept of self-attention, this architecture is able to predict all objects at once, and is trained end-to-end with a set loss function which performs bipartite matching between predicted and ground-truth objects.
+
+The next thing to be discussed is the architecture in detail:
+
+![alt text](./data/images/dert-detail.png "Dert architecture in detail")
+
+In the previous figure it can be seen that, DETR uses a conventional CNN backbone to learn a 2D representation of an input image. Then, the model flattens it and supplements it with a positional encoding before passing it into a transformer encoder (this will be the input of the encoder). A transformer decoder then takes as input a small fixed number of learned positional embeddings, which we call object queries, and additionally attends to the encoder output. Finally, each output embedding is passed to a shared feed forward network (FFN) that predicts either a detection (class
+and bounding box) or a “no object” class.
 
 ### Fine-tuning <a id="Fine-tuning"></a>
 
-For the fine-tuning a [dataset]((https://drive.google.com/drive/folders/1Z2RUfz8KP10lM3fk8sNSdPaMc0e5ll8D?usp=sharing)) has been prepared. This dataset contains approximately 900 images belonging to a larger dataset, the coco dataset. In this case, the the subset consists of 3 classes:
+For the fine-tuning a [dataset]((https://drive.google.com/drive/folders/1Z2RUfz8KP10lM3fk8sNSdPaMc0e5ll8D?usp=sharing)) has been prepared. This dataset contains approximately 900 images belonging to a larger dataset, the coco dataset. In this case, the subset consists of 3 classes:
 
 - fire hydrant
 - parking meter
