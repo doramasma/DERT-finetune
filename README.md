@@ -5,6 +5,7 @@ The mainly purpose of this repository is to fine-tune Facebook's [DERT](https://
 
 ![alt text](./data/images/dert-result.png "Dert result after finetune")
 
+
 Author: Doramas Báez Bernal <br/>
 Email: doramas.baez101@alu.ulpgc.es
 
@@ -15,6 +16,7 @@ Email: doramas.baez101@alu.ulpgc.es
 * [Detection Transformer (DERT)](#Dert)
     * [General information](#GeneralInformation)
     * [Fine-tuning](#Fine-tuning)
+    * [Results](#Results)
 * [References](#References)
 
 ## Introduction <a id="Introduction"></a>
@@ -29,7 +31,7 @@ This section indicates the main dependencies of the project:
 - torchvision>=0.6.0
 - pycocotools
 
-Also, it is necessary to download the following directories:
+Also, **it is necessary** to download the following directories:
 - [Dataset](https://drive.google.com/drive/folders/1Z2RUfz8KP10lM3fk8sNSdPaMc0e5ll8D?usp=sharing) for the fine-tuning
 - [Checkpoints](https://drive.google.com/drive/folders/1Z2RUfz8KP10lM3fk8sNSdPaMc0e5ll8D?usp=sharing) of the model after fine-tuning
 
@@ -44,19 +46,39 @@ path/to/DERT-finetune/
 │   ├ train2017/          # train images
 │   └ val2017/            # val images
 ├  outputs/              
-│    └ checkpoint.pth      # checkpoint of the model
-├  data/                 
-│    ├ dert_finetune/      # DETR to fine-tune on a dataset
-│    └ images/             # Images for the readme
+│   └ checkpoint.pth      # checkpoint of the model
+└  data/                 
+    ├ dert_finetune/      # DETR to fine-tune on a dataset
+    └ images/             # Images for the readme
 ```
 
 ## Detection Transformer (DERT) <a id="Dert"></a>
 
 ### General information (DERT) <a id="GeneralInformation"></a>
 
+![alt text](./data/images/dert.png "Dert architecture")
+
+DETR directly predicts (in parallel) the final set of detections by combining
+a common CNN with a transformer architecture. During training, bipartite matching uniquely assigns predictions with ground truth boxes. Prediction with no match should yield a “no object” (∅) class prediction.
+
 ### Fine-tuning <a id="Fine-tuning"></a>
 
+For the fine-tuning a [dataset]((https://drive.google.com/drive/folders/1Z2RUfz8KP10lM3fk8sNSdPaMc0e5ll8D?usp=sharing)) has been prepared. This dataset contains approximately 900 images belonging to a larger dataset, the coco dataset. In this case, the the subset consists of 3 classes:
 
+- fire hydrant
+- parking meter
+- stop sign
+
+Example of the images used:
+
+![alt-text-1](./data/images/000000013352_jpg.rf.0a0985720ef57efe0af0145bcbd926f0.jpg "Example fire hydrant") ![alt-text-2](./data/images/000000052644_jpg.rf.b4b30faafabdfabbb3b98b5cfde28576.jpg "Example parking meter")
+
+
+## Results <a id="Results"></a>
+
+The following results have been obtained by adapting the model weights (fine-tuning) for 30 epochs:
+
+![alt-text-1](./data/images/stop-result.png "Dert result after finetune stop sign") ![alt-text-2](./data/images/parking-result.png "Dert result after finetune parking meter")
 
 ## References <a id="References"></a> 
 
